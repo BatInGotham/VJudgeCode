@@ -23,7 +23,7 @@ int main()
         while(Left)
         {
             p1 = go(p1, 1, k);
-            p2 = go(p1, -1, m);
+            p2 = go(p2, -1, m);
             printf("%3d", p1);
             Left--;
             if(p1 != p2)
