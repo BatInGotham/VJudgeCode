@@ -51,7 +51,7 @@ int simulate(int *r0, int *c0) {
 }
 
 int main() {
-    int r0, c0, q, kase;
+    int r0, c0, q, kase = 0;
     while(scanf("%d%d%d", &r, &c, &n) == 3 && r) {
         for(int i = 0; i < n; i++) {
             scanf("%s", cmd[i].c);
