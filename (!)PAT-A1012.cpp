@@ -29,6 +29,7 @@ int main()
     }
     for(int i = 0; i < 4; i++)
     {
+        int last_n = 0, last_score = -1;
         for(int j = 0; j < data_cnt; j++)
         {
             int max = 0, maxn = -1;
@@ -39,7 +40,14 @@ int main()
                     maxn = k;
                 }
             }
-            stu[maxn].lvl[i] = j+1;
+            if(max == last_score) {
+                stu[maxn].lvl[i] = last_n;
+            }
+            else {
+                stu[maxn].lvl[i] = j+1;
+                last_n = j+1;
+                last_score = max;
+            }
         }
     }
     // process query
