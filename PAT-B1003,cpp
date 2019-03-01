@@ -1,0 +1,50 @@
+// PAT-B1003
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+
+int N;
+
+int main()
+{
+    scanf("%d", &N);
+    for (int i = 0; i < N; i++) {
+        char s[110];
+        bool foo = true;
+        scanf("%s", s);
+        int pcnt = 0, acnt = 0, tcnt = 0;
+        int ppos = -1, tpos = -1;
+        for (int j = 0; j < strlen(s); j++) {
+            if (s[j] != 'P' && s[j] != 'A' && s[j] != 'T') {
+                foo = false;
+                break;
+            }
+            switch (s[j]) {
+                case 'P': pcnt++; ppos = j; break;
+                case 'A': acnt++; break;
+                case 'T': tcnt++; tpos = j; break;
+                default: break;
+            }
+        }
+        if (pcnt != 1 || tcnt != 1) {
+            foo = false;
+        } else {
+            if (tpos - ppos == 2)
+                foo = true;
+            else if (tpos - ppos > 2) {
+                int length = strlen(s);
+                int d1 = tpos - ppos - 1;
+                int d2 = length - tpos - 1;
+                if (d2 >= d1 * ppos)
+                    foo = true;
+                else
+                    foo = false;
+            } else
+                foo = false;
+        }
+        if (foo)
+            printf("YES\n");
+        else
+            printf("NO\n");
+    }
+}
