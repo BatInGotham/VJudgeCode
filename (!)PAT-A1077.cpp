@@ -18,7 +18,7 @@ int main()
     }
     int length = 0;
 
-    for(int i = 0; i < s[0].length() && s[0][i] != ' '; i++) {
+    for(int i = 0; i < s[0].length(); i++) {
         bool foo = true;
         for(int j = 1; j < N; j++) {
             if(s[j][i] != s[0][i]) {
@@ -27,8 +27,10 @@ int main()
             }
         }
         if(foo) {
-            length = i + 1;
-            ret = s[0].substr(0, length);
+            if(s[0][i] != '~') {
+                length = i + 1;
+                ret = s[0].substr(0, length);
+            }
         } else {
             break;
         }
@@ -37,6 +39,9 @@ int main()
         cout << "nai";
     } else {
         reverse(ret.begin(), ret.end());
+        while(ret[0] == ' ') {
+            ret = ret.substr(1);
+        }
         cout << ret;
     }
 }
